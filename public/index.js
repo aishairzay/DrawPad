@@ -51,7 +51,9 @@ $("document").ready(function(e){
   $("#erase").click(function(){
     socket.emit('clear-page');
   });
-
+  $("#undo").click(function() {
+    socket.emit('undo');
+  });
   $(".canvas").mousemove(function(e) {
     if(mouseDown) {
       socket.emit('point', {x: e.pageX, y: e.pageY, color: myColor});

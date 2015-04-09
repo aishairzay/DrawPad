@@ -23,11 +23,17 @@ io.on('connection', function(socket){
     allPoints.push(data);
   });
 
+  socket.on('undo', function(){
+    io.emit('erase');
+    for(var i = 0;i<10;i++){
+      allPoints.pop();
+    }
+    io.emit('page-load', allPoints);
+  });
   socket.on('clear-page', function(){
     io.emit('erase');
     allPoints = [];
   });
-
 });
 
 
