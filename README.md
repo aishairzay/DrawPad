@@ -1,1 +1,2 @@
-This is my readme.
+##DrawPad
+DrawPad is a realtime drawing web-app.
