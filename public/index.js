@@ -55,6 +55,7 @@ $("document").ready(function(e){
   $(".canvas").mousemove(function(e) {
     if(mouseDown) {
       socket.emit('point', {x: e.pageX, y: e.pageY, color: myColor});
+      addNewPointToScreen(e.pageX, e.pageY, myColor);
     }
   });
 
@@ -80,7 +81,9 @@ socket.on('new-point', function(data){
   var x = data.x;
   var y = data.y;
   var color = data.color;
-  addNewPointToScreen(x, y, color);
+  if(color != myColor) {
+    addNewPointToScreen(x, y, color);
+  }
 });
 
 socket.on('erase', function() {
